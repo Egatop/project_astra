@@ -1,0 +1,34 @@
+[
+    {
+        "name": "Windows defender всегда должен работать",
+        "process_name": "MsMpEng.exe",
+        "condition": "running",
+        "severity": "high"
+    },
+    {
+        "name": "Discord может быть запущен, но не более 15 минут",
+        "process_name": "discord.exe",
+        "condition": "max_time_if_running",
+        "max_seconds": 900,
+        "severity": "medium"
+    },
+    {
+        "name": "Потенциально запрещено!",
+        "process_name": "notepad.exe",
+        "condition": "not_running",
+        "severity": "critical"
+    },
+    {
+        "name": "Проводник Windows должен работать всегда",
+        "process_name": "explorer.exe",
+        "condition": "running",
+        "severity": "high"
+    },
+    {
+        "name": "Браузер Chrome не должен работать более 5 минут",
+        "process_name": "chrome.exe",
+        "condition": "max_time_if_running",
+        "max_seconds": 300,
+        "severity": "high"
+    }
+]
