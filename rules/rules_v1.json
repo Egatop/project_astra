@@ -1,34 +1,65 @@
 [
     {
-        "name": "Windows defender всегда должен работать",
+        "name": "Антивирус должен работать всегда",
         "process_name": "MsMpEng.exe",
         "condition": "running",
-        "severity": "high"
+        "severity": "critical",
+        "description": "Защита от вредоносного ПО"
     },
     {
-        "name": "Discord может быть запущен, но не более 15 минут",
+        "name": "Системный процесс SvcHost должен быть запущен",
+        "process_name": "svchost.exe",
+        "condition": "running",
+        "severity": "high",
+        "description": "Критический компонент Windows"
+    },
+    {
+        "name": "Проводник Windows (графическая оболочка) обязателен",
+        "process_name": "explorer.exe",
+        "condition": "running",
+        "severity": "high",
+        "description": "Обеспечивает интерфейс пользователя"
+    },
+    {
+        "name": "Запрещено использовать торрент-клиенты",
+        "process_name": "utorrent.exe",
+        "condition": "not_running",
+        "severity": "critical",
+        "description": "Пиратство и риск заражения"
+    },
+    {
+        "name": "Запрещено использовать запрещенные мессенджеры (WhatsApp)",
+        "process_name": "whatsapp.exe",
+        "condition": "not_running",
+        "severity": "medium",
+        "description": "Утечка данных"
+    },
+    {
+        "name": "Браузер Chrome не должен работать более 2 часов",
+        "process_name": "chrome.exe",
+        "condition": "max_time_if_running",
+        "max_seconds": 7200,
+        "severity": "low",
+        "description": "Предотвращение прокрастинации"
+    },
+    {
+        "name": "Discord разрешён, но не дольше часа",
         "process_name": "discord.exe",
         "condition": "max_time_if_running",
-        "max_seconds": 900,
+        "max_seconds": 3600,
         "severity": "medium"
     },
     {
-        "name": "Потенциально запрещено!",
-        "process_name": "notepad.exe",
+        "name": "Процесс калькулятора запрещён (может использоваться для шифрования)",
+        "process_name": "CalculatorApp.exe",
         "condition": "not_running",
-        "severity": "critical"
+        "severity": "low"
     },
     {
-        "name": "Проводник Windows должен работать всегда",
-        "process_name": "explorer.exe",
-        "condition": "running",
-        "severity": "high"
-    },
-    {
-        "name": "Браузер Chrome не должен работать более 5 минут",
-        "process_name": "chrome.exe",
+        "name": "Блокнот разрешён, но не больше двух минут (для примера)",
+        "process_name": "notepad.exe",
         "condition": "max_time_if_running",
-        "max_seconds": 300,
-        "severity": "high"
+        "max_seconds": 120,
+        "severity": "low"
     }
 ]
