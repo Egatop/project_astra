@@ -25,29 +25,8 @@ def check_compliance(rules, processes_df):
                 violations.append({
                     'rule': rule['name'],
                     'process': proc_name,
-                    'issue': f'Процесс запущен (найдено {len(matching)}), хотя не должен быть'
+                    'issue': f'Запрещённый процесс обнаружен.'
                 })
-        
-        # Условие: процесс ДОЛЖЕН быть запущен, но не дольше N секунд
-        elif condition == 'max_time':
-            if matching.empty:
-                violations.append({
-                    'rule': rule['name'],
-                    'process': proc_name,
-                    'issue': 'Процесс не запущен (должен быть, но с ограничением по времени)'
-                })
-            else:
-                for _, proc in matching.iterrows():
-                    create_time = proc['create_time']
-                    if create_time:
-                        elapsed = current_time - create_time
-                        if elapsed > rule['max_seconds']:
-                            violations.append({
-                                'rule': rule['name'],
-                                'process': proc_name,
-                                'issue': f'Работает слишком долго: {elapsed:.0f} сек., максимум {rule["max_seconds"]} сек.'
-                            })
-        
         # УСЛОВИЕ: процесс МОЖЕТ быть запущен, но если запущен - не дольше N секунд
         elif condition == 'max_time_if_running':
             if not matching.empty:  # проверяем только если процесс запущен
@@ -59,7 +38,7 @@ def check_compliance(rules, processes_df):
                             violations.append({
                                 'rule': rule['name'],
                                 'process': proc_name,
-                                'issue': f'Процесс запущен и работает слишком долго: {elapsed:.0f} сек., максимум {rule["max_seconds"]} сек.'
+                                'issue': f'Превышено время работы: {elapsed:.0f} сек., максимум {rule["max_seconds"]} сек.'
                             })
         # Условие по умолчанию
         else:
