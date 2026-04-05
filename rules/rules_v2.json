@@ -1,0 +1,110 @@
+[
+    {
+        "name": "Антивирус должен работать всегда",
+        "process_name": "MsMpEng.exe",
+        "condition": "running",
+        "severity": "critical",
+        "description": "Защита от вредоносного ПО",
+        "category": "security",
+        "rule_type": "mandatory",
+        "is_threat_by_default": true,
+        "threshold_count": 1,
+        "exception_users": []
+    },
+    {
+        "name": "Системный процесс SvcHost должен быть запущен",
+        "process_name": "svchost.exe",
+        "condition": "running",
+        "severity": "high",
+        "description": "Критический компонент Windows",
+        "category": "system",
+        "rule_type": "mandatory",
+        "is_threat_by_default": true,
+        "threshold_count": 1,
+        "exception_users": []
+    },
+    {
+        "name": "Проводник Windows (графическая оболочка) обязателен",
+        "process_name": "explorer.exe",
+        "condition": "running",
+        "severity": "high",
+        "description": "Обеспечивает интерфейс пользователя",
+        "category": "system",
+        "rule_type": "mandatory",
+        "is_threat_by_default": true,
+        "threshold_count": 1,
+        "exception_users": []
+    },
+    {
+        "name": "Запрещено использовать торрент-клиенты",
+        "process_name": "utorrent.exe",
+        "condition": "not_running",
+        "severity": "critical",
+        "description": "Пиратство и риск заражения",
+        "category": "application",
+        "rule_type": "forbidden",
+        "is_threat_by_default": false,
+        "threshold_count": 2,
+        "exception_users": ["testuser", "admin"]
+    },
+    {
+        "name": "Запрещено использовать запрещенные мессенджеры (WhatsApp)",
+        "process_name": "whatsapp.exe",
+        "condition": "not_running",
+        "severity": "medium",
+        "description": "Утечка данных",
+        "category": "communication",
+        "rule_type": "forbidden",
+        "is_threat_by_default": true,
+        "threshold_count": 1,
+        "exception_users": []
+    },
+    {
+        "name": "Браузер Chrome не должен работать более 2 часов",
+        "process_name": "chrome.exe",
+        "condition": "max_time_if_running",
+        "max_seconds": 7200,
+        "severity": "low",
+        "description": "Предотвращение прокрастинации",
+        "category": "productivity",
+        "rule_type": "time_limit",
+        "is_threat_by_default": false,
+        "threshold_count": 3,
+        "exception_users": ["manager"]
+    },
+    {
+        "name": "Discord разрешён, но не дольше часа",
+        "process_name": "discord.exe",
+        "condition": "max_time_if_running",
+        "max_seconds": 3600,
+        "severity": "medium",
+        "category": "communication",
+        "rule_type": "time_limit",
+        "is_threat_by_default": false,
+        "threshold_count": 2,
+        "exception_users": []
+    },
+    {
+        "name": "Процесс калькулятора запрещён (может использоваться для шифрования)",
+        "process_name": "CalculatorApp.exe",
+        "condition": "not_running",
+        "severity": "low",
+        "category": "utility",
+        "rule_type": "forbidden",
+        "is_threat_by_default": false,
+        "threshold_count": 1,
+        "exception_users": []
+    },
+    {
+        "name": "Блокнот разрешён, но не больше двух минут (для примера)",
+        "process_name": "notepad.exe",
+        "condition": "max_time_if_running",
+        "max_seconds": 120,
+        "severity": "low",
+        "category": "utility",
+        "rule_type": "time_limit",
+        "is_threat_by_default": false,
+        "threshold_count": 2,
+        "exception_users": []
+    }
+]

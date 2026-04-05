@@ -1,0 +1,47 @@
+[
+    {
+        "timestamp": "2026-02-17T10:23:45",
+        "host": "workstation1",
+        "user": "user1",
+        "severity": "high",
+        "process": "utorrent.exe",
+        "is_threat": 1,
+        "is_false_positive": 0
+    },
+    {
+        "timestamp": "2026-02-18T14:15:22",
+        "host": "workstation2",
+        "user": "user2",
+        "severity": "high",
+        "process": "utorrent.exe",
+        "is_threat": 1,
+        "is_false_positive": 0
+    },
+    {
+        "timestamp": "2026-02-20T09:05:10",
+        "host": "server1",
+        "user": "admin",
+        "severity": "medium",
+        "process": "notepad.exe",
+        "is_threat": 0,
+        "is_false_positive": 1
+    },
+    {
+        "timestamp": "2026-02-22T11:30:00",
+        "host": "server2",
+        "user": "testuser",
+        "severity": "low",
+        "process": "calc.exe",
+        "is_threat": 1,
+        "is_false_positive": 0
+    },
+    {
+        "timestamp": "2026-03-01T15:45:12",
+        "host": "workstation3",
+        "user": "user3",
+        "severity": "medium",
+        "process": "discord.exe",
+        "is_threat": 1,
+        "is_false_positive": 0
+    }
+]
